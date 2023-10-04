@@ -123,5 +123,13 @@ INSERT INTO customer(customer_name, movie_id, watch_date) VALUES
 select * from movie ;
 select * from customer;
 
+-- all customerid,cname,all movies name which a customer has seen 
+select movie_id ,customer_name, name  from movie join customer on id = movie_id;
 
+-- get all the information of custmers wheather they watched movie or not
+select * from movie join customer on id = movie_id where id = movie_id;
+
+-- get the cid,total no of movies a person watched after 2000 year.alter
+select movie_id , count(select name from movie join customer on id = movie_id ) from customer;
+select name from movie join customer on id = movie_id ;
 
