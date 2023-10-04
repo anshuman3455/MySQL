@@ -1,0 +1,50 @@
+1. List the films where the yr is 1962 [Show id, title]
+
+Ans ==> select id, title from movie where yr=1962
+
+
+2. Give year of 'Citizen Kane'.
+
+Ans ==> select yr from movie where title = 'Citizen Kane'
+
+
+3. List all of the Star Trek movies, include the id, title and yr (all of these movies include the words Star Trek in the title). Order results by year.
+
+Ans ==> select id , title , yr from movie where title like 'Star Trek%' order by yr
+
+
+4. What id number does the actor 'Glenn Close' have?
+
+Ans ==> select id from actor where name = 'Glenn Close'
+
+
+5. What is the id of the film 'Casablanca'
+
+Ans ==> select id from movie where title = 'Casablanca'
+
+
+6. Obtain the cast list for 'Casablanca'.
+what is a cast list?
+Use movieid=11768, (or whatever value you got from the previous question)
+
+Ans ==> select name from casting join actor on id = actorid where movieid=11768
+
+
+7. Obtain the cast list for the film 'Alien'
+
+Ans ==> select actor.name from actor join casting on actor.id = casting.actorid join movie on movie.id= casting.movieid where movie.title = 'alien';
+
+
+8. List the films in which 'Harrison Ford' has appeared
+
+Ans ==> select movie.title from movie
+        join casting on casting.movieid = movie.id
+        join actor on actor.id = casting.actorid
+        where actor.name = 'Harrison Ford';
+
+
+9.List the films where 'Harrison Ford' has appeared - but not in the starring role. [Note: the ord field of casting gives the position of the actor. If ord=1 then this actor is in the starring role]
+
+Ans ==> select movie.title from movie join casting on (casting.movieid= movie.id) join actor on (actor.id=casting.actorid) where actor.name = 'Harrison Ford' and casting.ord != 1;
+
+
